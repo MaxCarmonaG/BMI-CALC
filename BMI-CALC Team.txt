@@ -1,0 +1,8 @@
+Grupo: BMI-CALC Team
+
+Miembros y roles:
+
+- Max Carmona        Product Owner
+- Daniel Martinez    Developer
+- Edgar Cabrera      Scrum Master
+- Divinson Cardenas  Developer
