@@ -1,0 +1,15 @@
+*.iml
+/android/BMICALC/.gradle
+/android/BMICALC/local.properties
+/android/BMICALC/.idea/caches
+/android/BMICALC/.idea/libraries
+/android/BMICALC/.idea/modules.xml
+/android/BMICALC/.idea/workspace.xml
+/android/BMICALC/.idea/navEditor.xml
+/android/BMICALC/.idea/assetWizardSettings.xml
+/android/BMICALC/.DS_Store
+/android/BMICALC/build
+/android/BMICALC/captures
+/android/BMICALC/.externalNativeBuild
+/android/BMICALC/.cxx
+/android/BMICALC/local.properties

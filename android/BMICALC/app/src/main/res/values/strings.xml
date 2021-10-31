@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BMI-CALC</string>
+    <string name="hello_world">Hello World!!!</string>
+    <string name="logo">logo</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="or">or</string>
+    <string name="return_button">Return Button</string>
+    <string name="weight_label">Weight</string>
+    <string name="height_label">Height</string>
+    <string name="Kg_units">Kg</string>
+    <string name="cm_units">cm</string>
+    <string name="calc">calculate</string>
+    <string name="clear">clear</string>
+    <string name="bmi_title">Your bmi is:</string>
+    <string name="bmi_rec">Your recommendations:</string>
+</resources>
