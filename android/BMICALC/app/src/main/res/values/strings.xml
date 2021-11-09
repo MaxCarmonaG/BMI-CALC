@@ -10,10 +10,13 @@
     <string name="return_button">Return Button</string>
     <string name="weight_label">Weight</string>
     <string name="height_label">Height</string>
+    <string name="bmi_label">BMI</string>
+    <string name="date_label">Date</string>
     <string name="Kg_units">Kg</string>
     <string name="cm_units">cm</string>
     <string name="calc">calculate</string>
     <string name="clear">clear</string>
     <string name="bmi_title">Your bmi is:</string>
     <string name="bmi_rec">Your recommendations:</string>
+    <string name="history">History</string>
 </resources>

@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BMICALC">
         <activity
-            android:name=".Calculator"
+            android:name=".RecordDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalculatorActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
