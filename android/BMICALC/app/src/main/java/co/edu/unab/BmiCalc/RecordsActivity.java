@@ -1,29 +1,36 @@
 package co.edu.unab.BmiCalc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-import co.edu.unab.BmiCalc.dataStorage.StorageRecords;
+import co.edu.unab.BmiCalc.dataStorage.Callback;
 import co.edu.unab.BmiCalc.model.Record;
 import co.edu.unab.BmiCalc.recycler.IClickListener;
 import co.edu.unab.BmiCalc.recycler.RecyclerRecords;
+import co.edu.unab.BmiCalc.repository.RecordRepository;
+import co.edu.unab.BmiCalc.repository.RecordRepositoryImpl;
 
 public class RecordsActivity extends AppCompatActivity {
     Record record;
+    RecordRepository repository;
+    ArrayList<Record> records;
+    String result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records);
 
-        ArrayList<Record> records = new StorageRecords().getRecords();
         ImageButton returnBtn = (ImageButton) findViewById(R.id.returnBtn);
         RecyclerView recordList = (RecyclerView) findViewById(R.id.recordList);
 
@@ -35,22 +42,35 @@ public class RecordsActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerRecords recyclerRecords = new RecyclerRecords(
-                this,
-                records,
-                R.layout.record,
-                new IClickListener() {
-                    @Override
-                    public void onClick(int position) {
-                        record = records.get(position);
-                        moveToDetails(record);
-                    }
-                }
-        );
+        repository = new RecordRepositoryImpl();
+        repository.findAll(new Callback() {
+                               @Override
+                               public void onSuccess(Object object) {
+                                   records = ((ArrayList<Record>) object);
+                                   RecyclerRecords recyclerRecords = new RecyclerRecords(
+                        RecordsActivity.this,
+                                           records,
+                        R.layout.record,
+                        new IClickListener() {
+                            @Override
+                            public void onClick(int position) {
+                                record = records.get(position);
+                                moveToDetails(record);
+                            }
+                        }
+                );
 
-        recordList.setAdapter(recyclerRecords);
-        recordList.setHasFixedSize(true);
-        recordList.setLayoutManager(new GridLayoutManager(this, 1));
+                recordList.setAdapter(recyclerRecords);
+                recordList.setHasFixedSize(true);
+                recordList.setLayoutManager(new GridLayoutManager(RecordsActivity.this, 1));
+                Log.d("msj", "Records loaded");
+                               }
+
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+
+                               }
+                           });
 
     }
 

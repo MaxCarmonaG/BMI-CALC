@@ -39,8 +39,8 @@ public class RecyclerRecords extends RecyclerView.Adapter<ViewHolderRecords> {
     public void onBindViewHolder(@NonNull ViewHolderRecords holder, int position) {
         Record record = records.get(position);
         holder.getTxtDate().setText(record.getDate());
-        holder.getTxtWeight().setText(Integer.toString(record.getWeight()));
-        holder.getTxtHeight().setText(Integer.toString(record.getHeight()));
+        holder.getTxtWeight().setText(Float.toString(record.getWeight()));
+        holder.getTxtHeight().setText(Float.toString(record.getHeight()));
         holder.getTxtBmi().setText(String.format("%, .2f", record.getBmi()));
         holder.getDetailsBtn().setOnClickListener(new View.OnClickListener() {
             @Override

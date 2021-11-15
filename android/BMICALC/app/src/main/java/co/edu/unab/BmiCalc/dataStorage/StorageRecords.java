@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import co.edu.unab.BmiCalc.BmiUtils;
 import co.edu.unab.BmiCalc.model.Record;
 
 public class StorageRecords {
+    BmiUtils bmiUtils = new BmiUtils();
     final private ArrayList<Record> records;
 
     public StorageRecords() {
@@ -17,10 +19,10 @@ public class StorageRecords {
 
         for(int i = 0; i < 15; i++) {
             record = new Record();
-            record.setDate(dateGenerator());
+            record.setDate(bmiUtils.dateGenerator());
             record.setWeight(random(35, 100));
             record.setHeight(random(140, 210));
-            record.setBmi(calcBmi(record.getHeight(), record.getWeight()));
+            record.setBmi(bmiUtils.calcBmi(record.getWeight(), record.getHeight()));
             record.setRecommendation("Maintaining a healthy weight is important for your heart health.");
             records.add(record);
         }
@@ -35,7 +37,7 @@ public class StorageRecords {
         return weight / ((height / 100) * (height / 100));
     }
 
-    private String dateGenerator() {
+    static String dateGenerator() {
         Date date = new Date();
         String pattern = "dd/MM/yyy";
         DateFormat df = new SimpleDateFormat(pattern);

@@ -26,8 +26,8 @@ public class RecordDetailsActivity extends AppCompatActivity {
         Record record = (Record) getIntent().getSerializableExtra("Record");
 
         txtDate.setText(record.getDate());
-        txtWeight.setText(Integer.toString(record.getWeight()));
-        txtHeight.setText(Integer.toString(record.getHeight()));
+        txtWeight.setText(Float.toString(record.getWeight()));
+        txtHeight.setText(Float.toString(record.getHeight()));
         txtBmi.setText(String.format("%, .2f", record.getBmi()));
         txtRec.setText(record.getRecommendation());
 

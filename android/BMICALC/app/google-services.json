@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69462299898",
+    "project_id": "bmi-calc-db",
+    "storage_bucket": "bmi-calc-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69462299898:android:d0cd7d3814831e481c2543",
+        "android_client_info": {
+          "package_name": "co.edu.unab.BmiCalc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69462299898-f5k0tsjafrb5h0g8loddv7t7bf3gqeas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCDkJhphh6XX58KVXZL3nJsF8dAUh3eKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69462299898-f5k0tsjafrb5h0g8loddv7t7bf3gqeas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
