@@ -28,7 +28,7 @@ public class RecordDetailsActivity extends AppCompatActivity {
         txtDate.setText(record.getDate());
         txtWeight.setText(Float.toString(record.getWeight()));
         txtHeight.setText(Float.toString(record.getHeight()));
-        txtBmi.setText(String.format("%, .2f", record.getBmi()));
+        txtBmi.setText(record.getBmi());
         txtRec.setText(record.getRecommendation());
 
         returnBtn.setOnClickListener(new View.OnClickListener() {

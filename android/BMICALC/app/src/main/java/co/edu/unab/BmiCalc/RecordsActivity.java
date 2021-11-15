@@ -24,7 +24,6 @@ public class RecordsActivity extends AppCompatActivity {
     Record record;
     RecordRepository repository;
     ArrayList<Record> records;
-    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,6 @@ public class RecordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_records);
 
         ImageButton returnBtn = (ImageButton) findViewById(R.id.returnBtn);
-        RecyclerView recordList = (RecyclerView) findViewById(R.id.recordList);
 
 
         returnBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,12 +42,12 @@ public class RecordsActivity extends AppCompatActivity {
 
         repository = new RecordRepositoryImpl();
         repository.findAll(new Callback() {
-                               @Override
-                               public void onSuccess(Object object) {
-                                   records = ((ArrayList<Record>) object);
-                                   RecyclerRecords recyclerRecords = new RecyclerRecords(
+            @Override
+            public void onSuccess(Object object) {
+                records = ((ArrayList<Record>) object);
+                RecyclerRecords recyclerRecords = new RecyclerRecords(
                         RecordsActivity.this,
-                                           records,
+                        records,
                         R.layout.record,
                         new IClickListener() {
                             @Override
@@ -59,18 +57,18 @@ public class RecordsActivity extends AppCompatActivity {
                             }
                         }
                 );
-
+                RecyclerView recordList = (RecyclerView) findViewById(R.id.recordList);
                 recordList.setAdapter(recyclerRecords);
                 recordList.setHasFixedSize(true);
                 recordList.setLayoutManager(new GridLayoutManager(RecordsActivity.this, 1));
                 Log.d("msj", "Records loaded");
-                               }
+            }
 
-                               @Override
-                               public void onFailure(@NonNull Exception e) {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 
-                               }
-                           });
+            }
+        });
 
     }
 

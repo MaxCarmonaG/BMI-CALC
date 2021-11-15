@@ -41,7 +41,7 @@ public class RecyclerRecords extends RecyclerView.Adapter<ViewHolderRecords> {
         holder.getTxtDate().setText(record.getDate());
         holder.getTxtWeight().setText(Float.toString(record.getWeight()));
         holder.getTxtHeight().setText(Float.toString(record.getHeight()));
-        holder.getTxtBmi().setText(String.format("%, .2f", record.getBmi()));
+        holder.getTxtBmi().setText(record.getBmi());
         holder.getDetailsBtn().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
