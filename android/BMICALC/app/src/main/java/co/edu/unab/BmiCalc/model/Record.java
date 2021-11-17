@@ -1,5 +1,7 @@
 package co.edu.unab.BmiCalc.model;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -22,6 +24,7 @@ public class Record implements Serializable {
         this.recommendation = recommendation;
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

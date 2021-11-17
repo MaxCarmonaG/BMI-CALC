@@ -193,6 +193,14 @@
             android:textSize="20sp"
             app:cornerRadius="15dp" />
 
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/play_bold"
+            android:text="@string/delete_btn"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 </LinearLayout>

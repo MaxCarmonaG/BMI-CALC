@@ -41,6 +41,14 @@ public class RecordsActivity extends AppCompatActivity {
         });
 
         repository = new RecordRepositoryImpl();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         repository.findAll(new Callback() {
             @Override
             public void onSuccess(Object object) {
@@ -69,7 +77,6 @@ public class RecordsActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void moveToDetails(Record record) {

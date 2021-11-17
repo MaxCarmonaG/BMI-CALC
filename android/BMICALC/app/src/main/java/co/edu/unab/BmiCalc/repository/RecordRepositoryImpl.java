@@ -29,6 +29,7 @@ public class RecordRepositoryImpl implements RecordRepository {
                     ArrayList<Record> records = new ArrayList<>();
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Record record = document.toObject(Record.class);
+                        record.setId(document.getId());
                         records.add(record);
                     }
                     callback.onSuccess(records);

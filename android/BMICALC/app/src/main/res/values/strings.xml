@@ -19,4 +19,5 @@
     <string name="bmi_title">Your bmi is:</string>
     <string name="bmi_rec">Your recommendations:</string>
     <string name="history">History</string>
+    <string name="delete_btn">delete</string>
 </resources>
