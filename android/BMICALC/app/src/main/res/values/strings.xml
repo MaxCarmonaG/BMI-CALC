@@ -20,4 +20,7 @@
     <string name="bmi_rec">Your recommendations:</string>
     <string name="history">History</string>
     <string name="delete_btn">delete</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="request_google">69462299898-k5mqg49g83stnj1ggls1d7kic1te4hps.apps.googleusercontent.com</string>
 </resources>
