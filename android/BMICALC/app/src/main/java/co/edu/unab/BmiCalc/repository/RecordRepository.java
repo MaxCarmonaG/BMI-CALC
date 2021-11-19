@@ -8,5 +8,5 @@ public interface RecordRepository {
     public void update(Record record, Callback callback);
     public void delete(Record record, Callback callback);
     public void findAll(Callback callback);
-//    public void findById(String id, Callback callback);
+    public void findByEmail(String email, Callback callback);
 }

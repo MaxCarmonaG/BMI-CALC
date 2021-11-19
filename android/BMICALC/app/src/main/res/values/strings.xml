@@ -23,4 +23,15 @@
     <string name="forgot_password">Forgot password</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="request_google">69462299898-k5mqg49g83stnj1ggls1d7kic1te4hps.apps.googleusercontent.com</string>
+    <string name="user_first_name">First Name</string>
+    <string name="user_last_name">Last Name</string>
+    <string name="user_phone">Telephone number</string>
+    <string name="user_email">Email</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="profile_form">Profile form</string>
+    <string name="activate_admin_profile">Activate Admin profile</string>
+    <string name="logout">Logout</string>
+    <string name="go_to_all_history">go to all history</string>
+    <string name="go_to_calculator">go to calculator</string>
 </resources>

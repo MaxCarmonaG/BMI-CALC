@@ -41,6 +41,26 @@ public class RecordRepositoryImpl implements RecordRepository {
     }
 
     @Override
+    public void findByEmail(String email, Callback callback) {
+        db.collection(COLLECTION).whereEqualTo("userEmail", email).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    ArrayList<Record> records = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        Record record = document.toObject(Record.class);
+                        record.setId(document.getId());
+                        records.add(record);
+                    }
+                    callback.onSuccess(records);
+                } else {
+                    callback.onFailure(null);
+                }
+            }
+        });
+    }
+
+    @Override
     public void create(Record record, Callback callback) {
         db.collection(COLLECTION).add(record.getMap()).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -80,4 +100,5 @@ public class RecordRepositoryImpl implements RecordRepository {
             }
         });
     }
+
 }

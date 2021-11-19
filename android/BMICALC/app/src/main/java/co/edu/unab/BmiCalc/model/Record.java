@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class Record implements Serializable {
     private String id;
+    private String userEmail;
     private String date;
     private float weight;
     private float height;
@@ -16,7 +17,8 @@ public class Record implements Serializable {
     public Record() {
     }
 
-    public Record(String date, float weight, float height, String bmi, String recommendation) {
+    public Record(String userEmail, String date, float weight, float height, String bmi, String recommendation) {
+        this.userEmail = userEmail;
         this.date = date;
         this.weight = weight;
         this.height = height;
@@ -31,6 +33,14 @@ public class Record implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getDate() {
@@ -75,7 +85,7 @@ public class Record implements Serializable {
 
     public HashMap<String, Object> getMap() {
         HashMap<String, Object> recordMap = new HashMap<>();
-        recordMap.put("id", getId());
+        recordMap.put("userEmail", getUserEmail());
         recordMap.put("date", getDate());
         recordMap.put("weight", getWeight());
         recordMap.put("height", getHeight());

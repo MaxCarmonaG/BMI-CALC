@@ -12,18 +12,24 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import co.edu.unab.BmiCalc.dataStorage.Callback;
 import co.edu.unab.BmiCalc.model.Record;
+import co.edu.unab.BmiCalc.model.User;
 import co.edu.unab.BmiCalc.repository.RecordRepository;
 import co.edu.unab.BmiCalc.repository.RecordRepositoryImpl;
 
 public class CalculatorActivity extends AppCompatActivity {
     RecordRepository repository;
     BmiUtils bmiUtils = new BmiUtils();
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        user = (User) getIntent().getSerializableExtra("User");
 
         EditText weightInput = (EditText) findViewById(R.id.weightInput);
         EditText heightInput = (EditText) findViewById(R.id.heightInput);
@@ -53,7 +59,7 @@ public class CalculatorActivity extends AppCompatActivity {
                     bmiResult.setText(bmi);
                     recText.setText(bmiRec);
 
-                    Record record = new Record(bmiUtils.dateGenerator(), weight, height, bmi, bmiRec);
+                    Record record = new Record(user.getEmail(), bmiUtils.dateGenerator(), weight, height, bmi, bmiRec);
 
                     repository = new RecordRepositoryImpl();
                     repository.create(record, new Callback() {
@@ -98,9 +104,10 @@ public class CalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CalculatorActivity.this, RecordsActivity.class);
+                intent.putExtra("User", user);
+                intent.putExtra("Show all", false);
                 startActivity(intent);
             }
         });
-
     }
 }
