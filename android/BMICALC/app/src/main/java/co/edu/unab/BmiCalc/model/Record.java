@@ -17,13 +17,12 @@ public class Record implements Serializable {
     public Record() {
     }
 
-    public Record(String userEmail, String date, float weight, float height, String bmi, String recommendation) {
+    public Record(String userEmail, String date, float weight, float height, String bmi) {
         this.userEmail = userEmail;
         this.date = date;
         this.weight = weight;
         this.height = height;
         this.bmi = bmi;
-        this.recommendation = recommendation;
     }
 
     @Exclude

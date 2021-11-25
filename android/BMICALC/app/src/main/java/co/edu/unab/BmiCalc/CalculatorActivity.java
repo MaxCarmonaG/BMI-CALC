@@ -17,8 +17,13 @@ import java.util.ArrayList;
 import co.edu.unab.BmiCalc.dataStorage.Callback;
 import co.edu.unab.BmiCalc.model.Record;
 import co.edu.unab.BmiCalc.model.User;
+import co.edu.unab.BmiCalc.network.Bmi;
+import co.edu.unab.BmiCalc.network.BmiApiClient;
+import co.edu.unab.BmiCalc.repository.GetBmiCategory;
 import co.edu.unab.BmiCalc.repository.RecordRepository;
 import co.edu.unab.BmiCalc.repository.RecordRepositoryImpl;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class CalculatorActivity extends AppCompatActivity {
     RecordRepository repository;
@@ -28,6 +33,9 @@ public class CalculatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        repository = new RecordRepositoryImpl();
+        GetBmiCategory apiBmi = BmiApiClient.getClient().create(GetBmiCategory.class);
 
         user = (User) getIntent().getSerializableExtra("User");
 
@@ -55,24 +63,40 @@ public class CalculatorActivity extends AppCompatActivity {
                     float weight = Float.parseFloat(weightText);
                     float height = Float.parseFloat(heightText) / 100;
                     String bmi = bmiUtils.calcBmi(weight, height);
-                    String bmiRec = bmiUtils.recBmi();
-                    bmiResult.setText(bmi);
-                    recText.setText(bmiRec);
 
-                    Record record = new Record(user.getEmail(), bmiUtils.dateGenerator(), weight, height, bmi, bmiRec);
+                    Record record = new Record(user.getEmail(), bmiUtils.dateGenerator(), weight, height, bmi);
 
-                    repository = new RecordRepositoryImpl();
-                    repository.create(record, new Callback() {
+                    Call<Bmi> callBmi = apiBmi.getBmiCat(bmi);
+
+                    callBmi.enqueue(new retrofit2.Callback<Bmi>() {
                         @Override
-                        public void onSuccess(Object object) {
-                            Log.d("msj", "Record created");
+                        public void onResponse(Call<Bmi> call, Response<Bmi> response) {
+                            record.setRecommendation(response.body().getWeightCategory());
+                            bmiResult.setText(bmi);
+                            recText.setText(record.getRecommendation());
+
+                            repository.create(record, new Callback() {
+                                @Override
+                                public void onSuccess(Object object) {
+                                    Log.d("msj", "Record created");
+                                }
+
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("msj", "Record not created");
+                                }
+                            });
+                            Log.d("Retrofit query", "BMI Category = " + record.getRecommendation() );
                         }
 
                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("msj", "Record not created");
+                        public void onFailure(Call<Bmi> call, Throwable t) {
+                            Log.d("Retrofit query", "Retrofit Error");
                         }
                     });
+
+
+
                 } catch (Exception e) {
                     Log.d("msj", e.getMessage());
                 }
